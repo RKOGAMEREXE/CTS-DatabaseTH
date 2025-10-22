@@ -1,6 +1,6 @@
 // Замените 'username' и 'repository' на соответствующие значения вашего репозитория
 const username = 'RKOGAMEREXE';
-const repository = 'CTS-THAILAND';
+const repository = 'CTS-DatabaseTH';
 detectColorScheme();
 
 $('#commits-container').hide();
