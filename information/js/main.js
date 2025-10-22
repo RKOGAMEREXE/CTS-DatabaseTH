@@ -1,13 +1,13 @@
 // Замените 'username' и 'repository' на соответствующие значения вашего репозитория
-//const username = 'RKOGAMEREXE';
-//const repository = 'CTS-DatabaseTH';
+const username = 'RKOGAMEREXE';
+const repository = 'CTS-DatabaseTH';
 detectColorScheme();
 
 $('#commits-container').hide();
 
 // Функция для получения данных с GitHub API
 async function getCommits() {
-    const apiUrl = `https://api.github.com/repos/RKOGAMEREXE/CTS-DatabaseTH/commits`;
+    const apiUrl = `https://api.github.com/repos/${username}/${repository}/commits`;
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
