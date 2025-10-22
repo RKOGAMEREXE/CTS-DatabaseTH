@@ -8913,6 +8913,50 @@
         "turret": "Type 4 Heavy"
     }
 }
+,"XM2001": {
+    "description": "NOT the Panzerhaubitze",
+    "tier": 8,
+    "rarity": "Epic",
+    "obtain": "Monthly Reward,October 2025 | Unknow⭐ (XM2001 Crusader Set)",
+    "resources": {},
+    "requires": {
+        "type": "None",
+        "name": ""
+    },
+    "stats": {
+        "weight": 23.00,
+        "armor": {
+            "front": 64,
+            "back": 30,
+            "side": 44
+        },
+        "speed": {
+            "acceleration": 8.0,
+            "forward": 68,
+            "backward": -35,
+            "torque": 12,
+            "rate": 0
+        },
+        "weaponry": {
+            "ammo_storage": 40.8,
+            "blowout": -1,
+            "hull_aim": 2,
+            "aps": 0,
+            "have_gun": false,
+            "gun": {}
+        },
+        "modules": {
+            "drone": "None",
+            "sensors": ["None"]
+        },
+        "crew": ["Driver", "Commander", "Gunner"]
+    },
+    "based_on": "",
+    "paired": {
+        "gun": "155mm XM297E2",
+        "turret": ""
+    }
+}
 ,"The Super Battlepass": {
     "description": "maus but epic",
     "tier": 8,
@@ -32068,6 +32112,56 @@
     "based_on": "pan [pan]",
     "paired": {
         "hull": "",
+        "turret": ""
+    }
+}
+,"155mm XM297E2": {
+    "description": "Advanced Field Artillery System",
+    "tier": 10,
+    "rarity": "Legendary",
+    "obtain": "Monthly Reward, October 2025 | Unknow⭐ (XM2001 Crusader Set)",
+    "resources": {},
+    "requires": {
+        "type": "None",
+        "name": ""
+    },
+    "stats": {
+        "weight": 2.05,
+        "weaponry": {
+            "clip": 0,
+            "reload": 18.0,
+            "accuracy": 55,
+            "ammo_volume": 2.05,
+            "caliber:": 155,
+            "ammunition": [{
+    "type": "HE",
+    "penetration": {
+        "0":  100,
+        "30":  100,
+        "60":  100
+    },
+    "velocity":  110,
+    "ricochet_angle":  81,
+    "stats": {
+        "explosive_mass": "18.43kg"
+    }
+},
+{
+    "type": "HEAT",
+    "penetration": {
+        "0":  450,
+        "30":  390,
+        "60":  225
+    },
+    "velocity":  1210,
+    "ricochet_angle":  87,
+    "stats": {}
+    }]
+        }
+    },
+    "based_on": "",
+    "paired": {
+        "hull": "XM2001",
         "turret": ""
     }
 }

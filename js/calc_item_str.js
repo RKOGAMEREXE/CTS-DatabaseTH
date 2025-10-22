@@ -2,7 +2,7 @@
 //D = 0.00906669**2+4*0.00000970477*(0.381528-y)
 //x = (-0.00906669-sqrt(D))/(-0.00000970477*2)
 
-const WEBHOOK_URL = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQyNjU0NjgyNjMwMzI0NjQyOC9uQXBNeDBXWXl1OFVRV1pONnE4VnRTV2IxX29LZ1haS2JwcTNpVkJ2cGx1dVh4djZ0UXBfV2tvNjhtUmFrSEVzVG9rNg=="
+const WEBHOOK_URL = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQyNDgwMDk4NTYwMzI0NDI1NS9TaTRxRTdnRVYyXzJ0S1VQdzVhQkNWb1JMMEZXZWhMaUNQVFAxclc1azhHaERwTzFtblNnVnVxWkVlVU04NEFJYmF0Qg=="
 var ammo_stats_titles = {
     "fuse_sensitive": ["Fuse Sensitive", "mm", 1],
     "fuse_delay": ["Fuse Delay", "m", 1],
