@@ -1,0 +1,238 @@
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CTS Database - By filters</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/logo.png">
+    <link rel="stylesheet" href="./../main.css">
+
+    <meta property="og:title" content="CTS Database - Search by filters">
+    <meta property="og:site_name" content="CTS Database">
+    <meta property="og:url" content="./">
+    <meta property="og:description" content="Easily search by filters to find the modules you need for Cursed Tank Simulator!">
+    <meta property="og:image" content="../img/logo.png">
+
+    <style>
+        .item_table {
+            border-bottom: 5px solid var(--main);
+            margin-bottom: 20px;
+        }
+
+        .item_table {
+            color: var(--main)
+        }
+
+        .type_search_select {
+            width: 100%;
+            grid-column: 1 / -2;
+        }
+
+        .search_container {
+            flex: none;
+            z-index: 5;
+        }
+
+        .filter_container {
+            padding: 10px;
+        }
+        .filter_container:empty {
+            padding: 0;
+        }
+
+        .search_container {
+            display: grid;
+            grid-template-columns: 1fr 43px;
+            grid-template-rows: 43px 1fr 43px;
+        }
+
+        .filter_item {
+            grid-column: 1;
+        }
+
+        .filter_item_option {
+            display: inline-block;
+            width: 45%;
+            margin: 0;
+        }
+
+        .filter_calc_option {
+            width: 20%;
+            padding: 3px;
+            height: 43px;
+        }
+
+        .button_search {
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        .search_text {
+            color: var(--main);
+            font-size: 1.5em;
+        }
+
+        .contents_dict {
+            list-style-type: square;
+
+            background-color: var(--elem);
+            border-radius: 8px;
+            border: 1px solid var(--bord);
+
+            width: 100%;
+
+            margin: 0;
+            padding: 10px 10px 10px 30px;
+
+            max-height: 200px;
+
+            overflow-y: scroll;
+        }
+
+        .contents_dict::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+        
+        .contents_dict::-webkit-scrollbar-track {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .contents_dict li {
+            padding: 5px 0px;
+        }
+
+        .contents_dict li a {
+            width: 100%;
+        }
+
+        .settings_popup {
+            position: fixed;
+
+            top: 20%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+            width: 45%;
+            color:  var(--main);
+            background-color: var(--elem);
+            
+            border-radius: 8px;
+            border: 1px solid var(--bord);
+
+            z-index: 20;
+
+            box-shadow: 0px 0px 1000px 1000px #00000063;
+            -moz-box-shadow: 0px 0px 1000px 1000px #00000063;
+            -webkit-box-shadow: 0px 0px 1000px 1000px #00000063;
+
+            transition: 0.2s;
+        }
+        .settings_popup .heading{
+            font-size: 35px;
+            text-align: left;
+            padding: 6px;
+            margin-bottom: 10px;
+            color:  var(--main);
+            border: 1px solid var(--bord);
+            border-left: none;
+            border-right: none;
+            background-color: var(--back);
+        
+        }
+        .settings_popup .message_box{
+            margin: 20px;
+        }
+
+        .settings_popup .message_box p {
+            padding-left: 5px;
+
+            vertical-align: text-top;
+        }
+
+        .settings_popup .message_box .toggle-rect {
+            margin-bottom: 10px;
+        }
+
+        .settings_popup .message_box #settings_max_output {
+            margin: 0px 0px 10px 0px;
+        }
+
+        .settings_popup .message_box #settings_save {
+            height: 40px;
+        }
+
+        @media (orientation: portrait) {
+            .settings_popup{
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs_container">
+        <button id="change_theme"><div ><img src="./../img/dark-mode.png"></div></button><a href="./../information/"><div ><p>i</p></div><a href="./../wiki/"><div ><p>W</p></div></a><a href="./../"><div><p>Search</p></div></a><a href="./"><div id="tabs_active"><p>By filters</p></div></a><a href="./../compare/"><div><p>Compare</p></div></a>
+    </div>
+
+    <div class="search_container">
+        <select id="type" class="type_search_select">
+            <option value="hulls">Hulls</option>
+            <option value="turrets">Turrets</option>
+            <option value="guns">Guns</option>
+        </select>
+        <div style=""><button id="settings_popup" type="button" class="button_search"><img style="width: 80%;" src="./../img/setting.png"></button></div>
+        <div id="filter_container" class="filter_container"></div>
+        <div style="grid-row: -2; grid-column: 1;"><button id="button_add" type="button" class="button_search search_text" style="width: 80%;">+</button><button id="button_rem" type="button" class="button_search search_text" style="width: 20%;">-</button></div>
+        <div style="grid-row-start: 2; grid-row-end: -1; grid-column: 2;"><button id="search" type="button" class="button_search"><img src="./../img/search.ico"></button></div>
+    
+        <ul id="modules_contents_dict" class="contents_dict" style="display: none;">
+        </ul>
+    </div>
+
+    <div class="item_container">
+        <table id="item_container_z" class="item_table">
+            <tr class="shown"><th colspan="2" id="name" class="stat_header">Name</th></tr>
+            <tr class="shown"><td colspan="2" class="stat_header"><div id="item_img_container"></div><img src="" id="item_img" loading="eager"></td></tr>
+            <tr class="shown"><th colspan="2"><button data="show" type="button" class="button_search show_stats_button" style="height: 40px;">Hide stats</button></th></tr>
+            <tr><th>Description</th><td id="description">Test123</td></tr>
+            <tr><th>Tier</th><td id="tier">Test123</td></tr>
+            <tr><th>Rarity</th><td id="rarity">Test123</td></tr>
+            <tr><th>Obtain</th><td id="obtain">Test123</td></tr>
+            <tr><th>Resources</th><td class="resources_container"><button type="button" id="show_calculated_resources" class="show_calculated_res"><span>=</span></button><p id="resources">Test123</p><p id="resources_calculated" style="display: none;">Test123</p></td></tr>
+            <tr><th colspan="2" class="stat_header">Stats</th></tr>
+            <tr><th>Weight</th><td id="weight"></td></tr>
+            <tr><td colspan="2" id="stats" class="stats"></td></tr>
+            <tr><th>Based on</th><td id="based_on"></td></tr>
+            <tr><th colspan="2" class="stat_header">Paired</th></tr>
+            <tr><th id="paired_1_text">Turret</th><td id="paired_1"></td></tr>
+            <tr><th id="paired_2_text">Gun</th><td id="paired_2"></td></tr>
+        </table>
+    </div>
+
+    <div class="settings_popup" style="display: none;">
+        <p class="heading">Filter Settings</p>
+        <div class="message_box">
+            <p>Max output</p>
+            <input type="number" id="settings_max_output" class="search_input" value=20 />
+            <p>Show stats</p>
+            <div class="toggle-rect">
+                <input type="checkbox" class="toggle-rect-input" id="settings_show_data" name="check">
+                <label for="settings_show_data"></label>
+            </div>
+            <button id="settings_save" class="button_search">Save</button>
+        </div> 
+    </div>
+
+    <div class="footer">
+        Credits:<br>
+        &nbsp;&nbsp;CTS Database by @theseasofenvy: <a href="https://docs.google.com/spreadsheets/d/1DzSz5p-lAJEM74g005gZm5Vp7Ot5k8I_ESVeUJSpSXw/edit#gid=1416330682">google docs</a><br>
+        &nbsp;&nbsp;Wiki made by @adam_and_steve: <a href="https://docs.google.com/document/d/1qcGJEEm2EQKLHUpsA8wF2UB8RH_YHT8g2bEHsImYyEU/edit">google docs</a>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>  
+    <script src="./../js/calc_item_str.js"></script>
+    <script src="./../js/resources_calc.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

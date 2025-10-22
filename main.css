@@ -1,0 +1,429 @@
+:root {
+    --main: rgb(0, 0, 0);
+    --void: rgb(255, 255, 255);
+    --back: rgb(245, 245, 245);
+    --elem: rgb(220, 220, 220);
+    --disb: rgb(181, 181, 181);
+    --bord: rgb(154, 154, 154);
+}
+
+[data-theme="dark"] {
+    --main: rgb(255, 255, 255);
+    --void: rgb(0, 0, 0);
+    --back: rgb(41, 41, 41);
+    --elem: rgb(51, 51, 51);
+    --disb: rgb(164, 164, 164);
+    --bord: rgb(129, 129, 129);
+
+    .button_search img, .show_button img, .tabs_container div img{
+        -webkit-filter: invert(1);
+        filter: invert(1);
+    }
+}
+
+::-webkit-scrollbar{    
+    width: 12px;
+    height: 12px;
+}
+
+html {
+    font-family:Consolas, monospace;
+    background-color: var(--void);
+    color: var(--main);
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+html::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+select, input, button {
+    border: 1px solid var(--bord);
+    background-color: var(--elem);
+    color: var(--main);
+}
+
+.button {
+    border: 1px solid var(--bord); 
+    background-color: var(--elem);
+    color: var(--main);
+}
+
+table {
+    width: 100%;
+}
+
+p {
+    margin: 0.2em 0 0.2em 0;
+}
+
+h2 {
+    margin-bottom: 0.3em;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+a {
+    color: var(--main);
+}
+
+.toggle-rect {
+    width: fit-content;
+    height: fit-content;
+}
+
+.toggle-rect input[type="checkbox"] {
+    display: none;
+}
+.toggle-rect input[type="checkbox"] + label {
+    display: block;
+    position: relative;
+    width: 3em;
+    height: 1.6em;
+    border-radius: 8px;
+    border: 1px solid var(--bord);
+    background: var(--elem);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+.toggle-rect input[type="checkbox"] + label:before {
+    content: "";
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 5px;
+    background: var(--main);
+    position: absolute;
+    left: 0.2em;
+    top: 0.2em;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.toggle-rect input[type="checkbox"]:checked + label {
+    background: var(--main);
+}
+.toggle-rect input[type="checkbox"]:checked + label:before {
+    background: var(--elem);
+    left: 1.6em;
+}
+
+.tabs_container {
+    width: 50%;
+    position: relative;
+    text-align: center;
+    left: 25%;
+    flex: 1 0 auto;
+    white-space: nowrap;
+
+    display: grid;
+    grid-template-columns: minmax(36px, 1fr) 1fr 1fr 4fr 4fr 4fr;
+    top: 10px;
+}
+
+.tabs_container a, .tabs_container p{
+    text-decoration: none;
+    color: var(--disb);
+}
+
+.tabs_container div, .tabs_container button {
+    vertical-align: middle;
+    border: 1px solid var(--bord);
+    border-bottom: none;
+    border-radius: 5px;
+    background-color: var(--void);
+    padding-bottom: 10px;
+}
+
+.tabs_container button {
+    padding: 0;
+}
+
+.tabs_container button div {
+    border: none;
+}
+
+.tabs_container div img {
+    border: none;
+
+    max-width: 100%;
+    height: 19px;
+}
+
+#tabs_active {
+    background-color: var(--back);
+}
+
+#tabs_active p {
+    color: var(--main);
+}
+
+.tabs_container div:hover {
+    background-color: var(--elem);
+}
+
+.tabs_container div:active {
+    background-color: var(--void);
+}
+
+.search_container {
+    width: 50%;
+    position: relative;
+    left: 25%;
+    flex: 1 0 auto;
+    background-color: var(--back);
+}
+
+.search_input {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    font-family:Consolas, monospace;
+    border: 1px solid var(--bord);
+    border-radius: 8px;
+    box-sizing: border-box;
+    z-index: 20;
+}
+
+.type_search_select, .tier_search_select {
+    font-family:Consolas, monospace;
+    width: 42%;
+    border-radius: 8px;
+    font-size: 1em;
+    padding: 10px;
+}
+
+.tier_search_select {
+    margin-left: 1%;
+}
+
+.button_search {
+    font-family:Consolas, monospace;
+    position: absolute;
+    background-color: var(--elem);
+    border-radius: 8px;
+    border: 1px solid var(--bord);
+    width: 14%;
+    /*height: -webkit-calc(1em + 20px);*/
+    height: 43px;
+    margin-left: 1%;
+}
+
+.button_search:hover, .button:hover, .show_calculated_res:hover {
+    background-color: var(--back);
+}
+
+.button_search:active, .button:active, .show_calculated_res:active {
+    background-color: var(--void);
+}
+
+.button_search img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.resources_container {
+    display: grid;
+
+    grid-template-columns: 30px 1fr;
+    column-gap: 3px;
+}
+
+.resource_item:hover {
+    background-color: var(--elem);
+}
+
+.resource_item:active {
+    background-color: var(--void);
+}
+
+.show_calculated_res {
+    font-family:Consolas, monospace;
+    background-color: var(--elem);
+    border-radius: 8px;
+    border: 1px solid var(--bord);
+    width: 100%;
+    /*height: -webkit-calc(1em + 20px);*/
+    height: 100%;
+
+    font-size: 1.5em;
+}
+
+.show_button {
+    font-family:Consolas, monospace;
+    background-color: var(--elem);
+    border-radius: 0.1em;
+    width: 1.5em;
+    /*height: -webkit-calc(1em + 20px);*/
+    height: 1.5em;
+    border: none;
+    padding: 0px;   
+}
+
+.show_button img {
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.1s;
+}
+
+.show_button:hover {
+    background-color: rgb(198, 198, 198);
+}
+
+.show_button:active {
+    background-color: rgb(166, 166, 166);
+}
+.ammo_types {
+    padding: 0.1em 0.2em 0.1em 2em;
+    background-color: var(--elem);
+    border-radius: 0.3em;
+}
+
+
+.search_results {
+    position: absolute;
+    width: 100%;
+    max-height: 750px; /* Задайте максимальную высоту блока */
+    overflow-y: auto; /* Создает вертикальную прокрутку в случае необходимости */
+    background-color: var(--back);
+    border: 1px solid var(--bord);
+    border-radius: 8px;
+    top: 20px;
+    z-index: 18;
+}
+
+.search_results td {
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--main);
+    padding: 10px;
+    font-size: 1em;
+}
+
+/* Стили для полосы прокрутки */
+.search_results::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Стили для ползунка */
+.search_results::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+/* Стили для трека */
+.search_results::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search_results tr:hover td {
+    background-color: rgba(0, 0, 0, 0.393);
+}
+
+/* Добавляем стили для таблицы, чтобы она занимала 100% ширины */
+#search_results {
+    width: 100%;
+}
+
+/* Удаляем ширину ячеек, чтобы они автоматически подстраивались под контент */
+#search_results td {
+    width: auto;
+}
+
+.item_container {
+    padding-top: 30px;
+    width: 50%;
+    position: relative;
+    left: 25%;
+    flex: 300 0 auto;
+    background-color: var(--back);
+    padding-bottom: 50px;
+}
+
+.item_container table {
+    border-collapse: collapse;
+}
+
+.item_container img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.item_container th {
+    vertical-align: text-top;
+    width: 30%;
+}
+
+.item_container td {
+    vertical-align: text-top;
+    width: 70%;
+}
+
+.item_container th, td{
+    padding: 0.3em 0.2em 0.3em 0.2em;
+}
+
+.stat_header {
+    border-bottom: 1px solid var(--bord);
+    font-size: 1.2em;
+}
+
+#name {
+    font-size: 2em;
+}
+
+.stats {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.stats_ammunition {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.footer {
+    left: 0;
+    bottom: 0;
+    width: calc(100%-20px);
+    background-color: var(--back);
+    border-top: 1px solid var(--bord);
+    padding: 10px;
+    z-index: 1;
+    flex: 0 0 auto;
+}
+
+#tab_logic {
+    overflow: auto;
+}
+
+
+@media (orientation: portrait) {
+    .tabs_container {
+        width: 100%;
+        position: relative;
+        left: 0%;
+    }
+
+    .search_container {
+        width: 100%;
+        position: relative;
+        left: 0%;
+    }
+
+    .item_container {
+        width: 100%;
+        position: relative;
+        left: 0%;
+    }
+}

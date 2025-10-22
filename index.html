@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CTS Database - Search</title>
+    <link rel="stylesheet" href="./main.css">
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
+
+    <meta property="og:title" content="CTS Database - Search">
+    <meta property="og:site_name" content="CTS Database">
+    <meta property="og:url" content="./">
+    <meta property="og:description" content="Quickly search and compare modules from the Cursed Tank Simulator!">
+    <meta property="og:image" content="img/logo.png">
+</head>
+<body>
+    <div class="tabs_container">
+        <button id="change_theme"><div ><img src="./img/dark-mode.png"></div></button><a href="./information/"><div ><p>i</p></div></a><a href="./wiki/"><div ><p>W</p></div></a><a href="./"><div id="tabs_active"><p>Search</p></div></a><a href="./all_objects/"><div><p>By filters</p></div></a><a href="./compare/"><div><p>Compare</p></div></a>
+    </div>
+
+    <div class="search_container">
+        <input type="search" id="search_input" placeholder="Search part..." class="search_input">
+
+        <div class="search_results">
+            <br>
+            <table id="search_results">
+            </table>
+        </div>
+    </div>
+
+    <div class="item_container">
+        <table id="item_container">
+            <tr><th colspan="2" id="name" class="stat_header">Name</th></tr>
+            <tr><td colspan="2" class="stat_header"><div id="item_img_container"></div><img src="" id="item_img" loading="eager"></td></tr>
+            <tr><th>Description</th><td id="description">Test123</td></tr>
+            <tr><th>Tier</th><td id="tier">Test123</td></tr>
+            <tr><th>Rarity</th><td id="rarity">Test123</td></tr>
+            <tr><th>Obtain</th><td id="obtain">Test123</td></tr>
+            <tr><th>Resources</th><td class="resources_container"><button type="button" id="show_calculated_resources" class="show_calculated_res"><span>=</span></button><p id="resources">Test123</p><p id="resources_calculated" style="display: none;">Test123</p></td></tr>
+            <tr><th>Requires</th><td id="requires">Test123</td></tr>
+            <tr><th colspan="2" class="stat_header">Stats</th></tr>
+            <tr><th>Weight</th><td id="weight"></td></tr>
+            <tr><td colspan="2" id="stats" class="stats"></td></tr>
+            <tr><th>Based on</th><td id="based_on"></td></tr>
+            <tr><th colspan="2" class="stat_header">Paired</th></tr>
+            <tr><th id="paired_1_text">Turret</th><td id="paired_1"></td></tr>
+            <tr><th id="paired_2_text">Gun</th><td id="paired_2"></td></tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        Credits:<br>
+        &nbsp;&nbsp;CTS Database by @theseasofenvy: <a href="https://docs.google.com/spreadsheets/d/1DzSz5p-lAJEM74g005gZm5Vp7Ot5k8I_ESVeUJSpSXw/edit#gid=1416330682">google docs</a><br>
+        &nbsp;&nbsp;Wiki made by @adam_and_steve: <a href="https://docs.google.com/document/d/1qcGJEEm2EQKLHUpsA8wF2UB8RH_YHT8g2bEHsImYyEU/edit">google docs</a>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>  
+    <script src="./database.json"></script>
+    <script src="./js/calc_item_str.js"></script>
+    <script src="./js/resources_calc.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
